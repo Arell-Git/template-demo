@@ -46,6 +46,9 @@ sendPromptBtn.addEventListener("click", function() {
         const productAudience = document.getElementById("product-target").value;
         const productDiscount = document.getElementById("product-discount").value;
         const language = document.querySelector(".language-input").value;
+
+         // get id to display response
+        const factory = document.getElementById('gpt-response')
     
         const my_prompt = `
         Document Name: ${documentName}
@@ -77,13 +80,16 @@ sendPromptBtn.addEventListener("click", function() {
             })
             const response = await res.json()
             const content = response.message[0].message.content;
+
+            console.log("Before fact")
             factory.innerHTML = `<p>${content}</p>`;
+
+
         } catch (err) {
             console.log(err.message)
         } 
         
     }
 
-     // get id to display response
-     const factory = document.getElementById('gpt-response')
+    
 
